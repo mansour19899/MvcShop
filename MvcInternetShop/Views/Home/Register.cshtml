@@ -1,0 +1,133 @@
+﻿@model MvcInternetShop.Models.DomainModels.User
+
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<div class="block grid12">
+    <div class="breadcrumb">
+        <a href="/Home/Index">صفحه اصلی</a><span>›</span><a href="/Home/Register">ثبت نام</a>
+    </div>
+</div>
+<div class="full9">
+    <div class="block grid9">
+        @using (Ajax.BeginForm("Register", "Home", new AjaxOptions { HttpMethod = "Post", Url = "/Home/Register" }))
+        {
+            <h1 class="block-header">ثبت نام کاربر</h1>
+            <div class="separator"></div>
+            <div class="block-standart">
+                <div class="form inline">
+                    <div class="group">
+                        <p>
+                            اگر شما ثبت نام کرده اید برای ورود به صفحه <a href="#" style="color:green"> ورود کاربران </a>بروید.
+                        </p>
+                    </div>
+                    <div class="group">
+                        <h2>اطلاعات شخصی</h2>
+                    </div>
+                    <div class="group">
+                        <label class="label">نام و نام خانوادگی <span class="required">*</span></label>
+                        <div class="controls">
+                            @Html.TextBoxFor(p => p.Name, new { @class = "text" })
+                            @Html.ValidationMessageFor(p => p.Name)
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label class="label">ایمیل <span class="required">*</span></label>
+                        <div class="controls">
+                            @Html.TextBoxFor(p => p.UserName, new { @class = "text" })
+                            @Html.ValidationMessageFor(p => p.UserName)
+                        </div>
+                    </div>
+                    <div class="group">
+                        <h2>رمز عبور شما</h2>
+                    </div>
+                    <div class="group">
+                        <label class="label">رمز عبور <span class="required">*</span></label>
+                        <div class="controls">
+                            @Html.TextBoxFor(p => p.Password, new { @class = "text" })
+                            @Html.ValidationMessageFor(p => p.Password)
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label class="label">تکرار رمز عبور <span class="required">*</span></label>
+                        <div class="controls">
+                            @Html.TextBoxFor(p => p.ConfirmPassword, new { @class = "text" })
+                            @Html.ValidationMessageFor(p => p.ConfirmPassword)
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label class="label">تاریخ تولد </label>
+                        <div class="controls">
+                            @Html.TextBoxFor(p => p.BrithDate, new { @class = "text" })
+                            @Html.ValidationMessageFor(p => p.BrithDate)
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label class="label">موبایل</label>
+                        <div class="controls">
+                            @Html.TextBoxFor(p => p.Mobile, new { @class = "text" })
+                            @Html.ValidationMessageFor(p => p.Mobile)
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label class="label">تلفن</label>
+                        <div class="controls">
+                            @Html.TextBoxFor(p => p.Tell, new { @class = "text" })
+                            @Html.ValidationMessageFor(p => p.Tell)
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label class="label">جنسیت</label>
+                        <div class="controls">
+                            <select id="Gender" name="Gender" class="text">
+                                <option value="True">مرد</option>
+                                <option value="False">زن</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="block-standart">
+                <div class="form">
+                    <div class="group">
+                        <div class="controls">
+                            <button class="button">ثبت نام</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="full3">
+    <div class="block grid3">
+        <h2 class="block-header">منوی کاربری</h2>
+        <div class="separator"></div>
+        <ul class="block-nav-links">
+            <li><a href="login.html">ورود</a> / <a href="register.html">ثبت نام</a></li>
+            <li><a href="#">فراموش کردن رمز عبور</a></li>
+            <li><a href="account.html">ناحیه کاربری من</a></li>
+            <li><a href="#">لیست انتخاب</a></li>
+            <li><a href="#">تاریخچه خرید من</a></li>
+            <li><a href="#">دانلودها</a></li>
+            <li><a href="#">بازخوردها</a></li>
+            <li><a href="#">عملیات ورهگیری</a></li>
+            <li><a href="#">خبرنامه</a></li>
+        </ul>
+    </div>
+</div>
+
+@section styles{
+    <link href="@Url.Content("~/Scripts/PersianDateTimePicker/jquery-ui-datetimepicker.min.css")" rel="stylesheet" />
+}
+@section scripts{
+    <script src="@Url.Content("~/Scripts/PersianDateTimePicker/jquery-ui-datetimepicker.min.js")"></script>
+    <script>
+        $(function () {
+            $("#BirthDate").datepicker();
+        });
+    </script>
+}
