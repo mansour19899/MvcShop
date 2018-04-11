@@ -41,21 +41,26 @@ namespace MvcInternetShop.Controllers
             UserRepository blUser = new UserRepository();
             if (ModelState.IsValid)
             {
+                if (user.BrithDate != null)
+                {
+                    user.BrithDate = user.BrithDate.Value.ToMiladiDate();
+                }
+
                 if (blUser.Add(user))
                 {
                     //موفق
-                    return JavaScript("alert('با موفقیت ثبت شد');");
+                    return MessageBox.Show("با موفقیت ثبت شد", MessageType.Success);
                 }
                 else
                 {
                     //نا موفق
-                    return JavaScript("alert('ثبت نشد');");
+                    return MessageBox.Show("ثبت نشد", MessageType.Error);
                 }
             }
             else
             {
                 //خطا مقداری
-                return JavaScript("alert('مقادیر ورودی اشتباه است');");
+                return MessageBox.Show(ModelState.GetErrors(), MessageType.Warning);
             }
         }
     

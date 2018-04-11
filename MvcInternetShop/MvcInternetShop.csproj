@@ -148,6 +148,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Utilities\MessageBox.cs" />
+    <Compile Include="Helpers\Utilities\Utilty.cs" />
     <Compile Include="Models\DomainModels\Group.cs">
       <DependentUpon>MvcShopModel.tt</DependentUpon>
     </Compile>
@@ -385,6 +387,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Noty\jquery.noty.js" />
+    <Content Include="Scripts\PersianDateTimePicker\jquery-ui-datetimepicker.min.css" />
+    <Content Include="Scripts\PersianDateTimePicker\jquery-ui-datetimepicker.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
@@ -407,7 +412,6 @@
     <Folder Include="Helpers\Attributes\" />
     <Folder Include="Helpers\Filters\" />
     <Folder Include="Helpers\HtmlHelpers\" />
-    <Folder Include="Helpers\Utility\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
