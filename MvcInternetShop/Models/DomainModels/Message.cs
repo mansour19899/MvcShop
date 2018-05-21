@@ -19,7 +19,7 @@ namespace MvcInternetShop.Models.DomainModels
         public string Body { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public string WebSite { get; set; }
+        public string Website { get; set; }
         public bool IsRead { get; set; }
     }
 }

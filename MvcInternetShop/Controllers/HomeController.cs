@@ -41,9 +41,9 @@ namespace MvcInternetShop.Controllers
             UserRepository blUser = new UserRepository();
             if (ModelState.IsValid)
             {
-                if (user.BrithDate != null)
+                if (user.BirthDate != null)
                 {
-                    user.BrithDate = user.BrithDate.Value.ToMiladiDate();
+                    user.BirthDate = user.BirthDate.Value.ToMiladiDate();
                 }
 
                 if (blUser.Add(user))

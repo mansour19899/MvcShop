@@ -17,13 +17,17 @@ namespace MvcInternetShop.Models.DomainModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Group()
         {
+            this.Groups1 = new HashSet<Group>();
             this.Products = new HashSet<Product>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public int ParentId { get; set; }
+        public Nullable<int> ParentId { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Group> Groups1 { get; set; }
+        public virtual Group Group1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
     }

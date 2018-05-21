@@ -5,16 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="91d1ffa5162844eab626b9e4e4bece64" Name="Diagram1">
-        <EntityTypeShape EntityType="MvcShopModel.Group" Width="1.5" PointX="1.5" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcShopModel.Message" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcShopModel.Order" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcShopModel.Product" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcShopModel.Purchase" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcShopModel.User" Width="1.5" PointX="0.875" PointY="2.5" IsExpanded="true" />
-        <AssociationConnector Association="MvcShopModel.FK_Products_Groups" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcShopModel.FK_Orders_Products" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcShopModel.FK_Orders_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcShopModel.FK_Purchases_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MvcShopModel.Group" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="MvcShopModel.Message" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MvcShopModel.Order" Width="1.5" PointX="5.25" PointY="1.75" />
+        <EntityTypeShape EntityType="MvcShopModel.Product" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="MvcShopModel.Purchase" Width="1.5" PointX="5.25" PointY="6.75" />
+        <EntityTypeShape EntityType="MvcShopModel.User" Width="1.5" PointX="3" PointY="6.375" />
+        <AssociationConnector Association="MvcShopModel.FK_Groups_Groups" />
+        <AssociationConnector Association="MvcShopModel.FK_Products_Groups" />
+        <AssociationConnector Association="MvcShopModel.FK_Orders_Products" />
+        <AssociationConnector Association="MvcShopModel.FK_Orders_Users" />
+        <AssociationConnector Association="MvcShopModel.FK_Purchases_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

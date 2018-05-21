@@ -15,7 +15,7 @@ namespace MvcInternetShop.Models.DomainModels
     public partial class Order
     {
         public int Id { get; set; }
-        public int UserID { get; set; }
+        public int UserId { get; set; }
         public int ProductId { get; set; }
         public byte Qty { get; set; }
         public System.DateTime OrderDate { get; set; }

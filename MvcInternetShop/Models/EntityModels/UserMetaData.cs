@@ -22,7 +22,7 @@ namespace MvcInternetShop.Models.EntityModels
         [DisplayName("ایمیل (نام کاربری)")]
         [RegularExpression(@"^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,4})$", ErrorMessage = "ایمیل را بدرستی وارد کنید")]
         [StringLength(50, ErrorMessage = "این فیلد باید حداکثر 50 کاراکتر باشد")]
-        public string UserName { get; set; }
+        public string Username { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "رمز عبور خود را وارد کنید")]
         [DisplayName("رمز عبور")]
@@ -31,7 +31,7 @@ namespace MvcInternetShop.Models.EntityModels
         public string Password { get; set; }
         [Display(Name = "تاریخ تولد")]
         [DisplayName("تاریخ تولد")]
-        public Nullable<System.DateTime> BrithDate { get; set; }
+        public Nullable<System.DateTime> BirthDate { get; set; }
         [DisplayName("شماره موبایل")]
         [Display(Name = "شماره موبایل")]
         [RegularExpression(@"^0?9[123]\d{8}$", ErrorMessage = "شماره موبایل را بدرستی وارد کنید")]
