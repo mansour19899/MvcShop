@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MvcInternetShop.Models.DomainModels.Group>
+
+@helper AddOption(int? parentId, string space)
+{
+    foreach (var item in Model.Where(p => p.ParentId == parentId).ToList())
+    {
+        <option value="@item.Id" parentid="@item.ParentId">@space  @item.Name</option>
+        @Html.Raw(HttpUtility.HtmlDecode(AddOption(item.Id, space + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").ToString()));
+    }
+}
+
+<div id="divGroupList">
+    <select id="Group_ParentId" name="Group.ParentId" size="15" style="width:250px">
+        <option value="">گروه اصلی</option>
+        @AddOption(null, "")
+    </select>
+</div>

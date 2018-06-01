@@ -15,7 +15,7 @@
         @using (Ajax.BeginForm("Register", "Home", new AjaxOptions { HttpMethod = "Post", Url = "/Home/Register" }))
         {
 
-            Html.EnableClientValidation(false);
+            Html.EnableClientValidation(true);
             <h1 class="block-header">ثبت نام کاربر</h1>
             <div class="separator"></div>
             <div class="block-standart">
