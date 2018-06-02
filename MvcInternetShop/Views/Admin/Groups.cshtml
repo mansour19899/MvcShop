@@ -49,7 +49,7 @@
             $("#Group_ParentId").click(function () {
                 if ($("#Group_ParentId").find(":selected").length > 0) {
                     var txt = $("#Group_ParentId").find(":selected").text().trim();
-                    $("#Group_Name").val(txt.substring(1))
+                    $("#Group_Name").val(txt)
                 }
             });
             $("#btnAdd").click(function (e) {
