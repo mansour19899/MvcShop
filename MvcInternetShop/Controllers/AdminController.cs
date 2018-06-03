@@ -31,6 +31,8 @@ namespace MvcInternetShop.Controllers
         {
             if (blGroup.Delete(id))
             {
+                ViewData["id"] = "Group_ParentId";
+                ViewData["name"] = "Group.ParentId";
                 return Json(new JsonData()
                 {
                     Script = MessageBox.Show("با موفقیت حذف شد", MessageType.Success).Script,
@@ -49,6 +51,42 @@ namespace MvcInternetShop.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult AddProduct()
+        {
+            var model = new AddProductViewModel();
+            model.Groups = blGroup.Select();
+            return View(model);
+        }
+
+
+        [AjaxOnly]
+        [HttpPost]
+        public ActionResult AddProduct(Product product, HttpPostedFileBase UploadImage)
+        {
+            ProductRepository blProduct = new ProductRepository();
+            if (ModelState.IsValid)
+            {
+                product.Image = UploadImage.FileName;
+                string path = Server.MapPath("~") + "Files\\UploadImages\\" + UploadImage.FileName;
+                UploadImage.InputStream.ResizeImageByWidth(500, path, Utilty.ImageComperssion.Normal);
+
+                if (blProduct.Add(product))
+                {
+                    return MessageBox.Show("محصول با موفقیت ثبت شد", MessageType.Success);
+                }
+                else
+                {
+                    System.IO.File.Delete(path);
+                    return MessageBox.Show("محصول ثبت نشد", MessageType.Error);
+                }
+            }
+            else
+            {
+                //مقدار ورودی اشتباه
+                return MessageBox.Show(ModelState.GetErrors(), MessageType.Warning);
+            }
+        }
 
 
         [HttpPost]
@@ -59,6 +97,8 @@ namespace MvcInternetShop.Controllers
             {
                 if (blGroup.Add(group))
                 {
+                    ViewData["id"] = "Group_ParentId";
+                    ViewData["name"] = "Group.ParentId";
                     //موفق
                     return Json(new JsonData()
                     {
@@ -98,6 +138,8 @@ namespace MvcInternetShop.Controllers
             {
                 if (blGroup.Update(group))
                 {
+                    ViewData["id"] = "Group_ParentId";
+                    ViewData["name"] = "Group.ParentId";
                     //موفق
                     return Json(new JsonData()
                     {
