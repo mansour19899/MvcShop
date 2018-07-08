@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace MvcInternetShop.Models.Repositories
@@ -24,16 +27,46 @@ namespace MvcInternetShop.Models.Repositories
                 else
                     return false;
             }
-            catch
+            catch (System.Data.Entity.Validation.DbEntityValidationException vex)
             {
-                return false;
+                var exception =vex;
+                throw exception;
+            }
+            catch (DbUpdateException dbu)
+            {
+                var exception = HandleDbUpdateException(dbu);
+                throw exception;
             }
         }
 
-        public bool Update(MvcInternetShop.Models.DomainModels.Product entity, bool autoSave = true)
+        private Exception HandleDbUpdateException(DbUpdateException dbu)
+        {
+            var builder = new StringBuilder("A DbUpdateException was caught while saving changes. ");
+
+            try
+            {
+                foreach (var result in dbu.Entries)
+                {
+                    builder.AppendFormat("Type: {0} was part of the problem. ", result.Entity.GetType().Name);
+                }
+            }
+            catch (Exception e)
+            {
+                builder.Append("Error parsing DbUpdateException: " + e.ToString());
+            }
+
+            string message = builder.ToString();
+            return new Exception(message, dbu);
+        }
+
+        public bool Update(MvcInternetShop.Models.DomainModels.Product entity, string imagePath, bool autoSave = true)
         {
             try
             {
+                if (imagePath != null)
+                {
+                    entity.Image = imagePath;
+                }
                 db.Products.Attach(entity);
                 db.Entry(entity).State = System.Data.Entity.EntityState.Modified;
                 if (autoSave)
@@ -70,7 +103,21 @@ namespace MvcInternetShop.Models.Repositories
                 var entity = db.Products.Find(id);
                 db.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
                 if (autoSave)
-                    return Convert.ToBoolean(db.SaveChanges());
+                {
+                    bool result = Convert.ToBoolean(db.SaveChanges());
+                    if (result)
+                    {
+                        try
+                        {
+                            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Files\\UploadImages\\" + entity.Image) == true)
+                            {
+                                File.Delete(AppDomain.CurrentDomain.BaseDirectory + "\\Files\\UploadImages\\" + entity.Image);
+                            }
+                        }
+                        catch { }
+                    }
+                    return result;
+                }
                 else
                     return false;
             }

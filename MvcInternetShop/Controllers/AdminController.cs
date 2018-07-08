@@ -55,7 +55,13 @@ namespace MvcInternetShop.Controllers
         public ActionResult AddProduct()
         {
             var model = new AddProductViewModel();
-            model.Groups = blGroup.Select();
+            ProductRepository blProduct = new ProductRepository();
+            var t = blProduct.Select();
+         MvcInternetShop.Models.DomainModels.MvcShopEntities db = new MvcShopEntities();
+            var tt = db.Products.AsQueryable();
+            var tttt = tt.ToList();
+
+        model.Groups = blGroup.Select();
             return View(model);
         }
 
