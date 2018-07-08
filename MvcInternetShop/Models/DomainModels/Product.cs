@@ -29,8 +29,8 @@ namespace MvcInternetShop.Models.DomainModels
         public string Keywords { get; set; }
         public string Description { get; set; }
         public string Tags { get; set; }
-        public int Like { get; set; }
-        public int Dislike { get; set; }
+        public Nullable<int> Like { get; set; }
+        public Nullable<int> Dislike { get; set; }
         public bool Enabled { get; set; }
         public string Image { get; set; }
     

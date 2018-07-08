@@ -21,6 +21,7 @@ namespace MvcInternetShop.Models.Repositories
         {
             try
             {
+       
                 db.Products.Add(entity);
                 if (autoSave)
                     return Convert.ToBoolean(db.SaveChanges());

@@ -21,7 +21,7 @@ namespace MvcInternetShop.Models.DomainModels
         public System.DateTime OrderDate { get; set; }
         public bool IsBuy { get; set; }
     
-        public virtual Product Product { get; set; }
         public virtual User User { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
